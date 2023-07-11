@@ -1,0 +1,23 @@
+.pdf-view-container {
+  border: 1px solid black;
+  padding: 16px;
+  width: 650px;
+  margin-top: -30px;
+  margin-left: 300px;
+  border-radius: 12px;
+  padding-bottom: 0;
+  /* max-height: 900px; */
+  width: auto;
+}
+
+.pdf-view-container nav {
+  margin-bottom: 2px;
+}
+
+.pdf-view-container button {
+  margin-right: 8px;
+}
+
+.pdf-view-container p {
+  margin: 0;
+}
