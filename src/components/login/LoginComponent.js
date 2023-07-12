@@ -5,9 +5,11 @@ import { redirect, useNavigate } from "react-router-dom";
 import { useRecoilState, useRecoilValue } from "recoil";
 import { loginStateAtom } from "../../context/loginState";
 
+const REACT_APP_BASE_URL = process.env.REACT_APP_BASE_URL;
+
 const getToken = async (credentials) => {
   const token = await axios.post(
-    "http://localhost:8000/users/login",
+    `${REACT_APP_BASE_URL}users/login`,
     JSON.stringify(credentials),
     {
       headers: {

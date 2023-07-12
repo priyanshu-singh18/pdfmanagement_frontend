@@ -4,10 +4,12 @@ import { filedatastate } from "../../context/filedataState";
 import axios from "axios";
 import "./CommentList.css";
 
+const REACT_APP_BASE_URL = process.env.REACT_APP_BASE_URL;
+
 const post_comment = async (data, token) => {
   try {
     const response = await axios.post(
-      "http://127.0.0.1:8000/uploads/comment",
+      `${REACT_APP_BASE_URL}uploads/comment`,
       JSON.stringify(data),
       {
         headers: {
@@ -110,7 +112,7 @@ const CommentList = () => {
   useEffect(() => {
     const get_comments = async () => {
       const data = await axios.get(
-        `http://127.0.0.1:8000/uploads/comments?file_id=${file_id}`,
+        `${REACT_APP_BASE_URL}uploads/comments?file_id=${file_id}`,
         {
           headers: {
             Authorization: `Bearer ${token}`,

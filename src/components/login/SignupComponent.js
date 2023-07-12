@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import "./SignupComponent.css";
+import dotenv from "dotenv";
 
 export default function SignupComponent() {
   const [username, setUsername] = useState("");
@@ -10,10 +11,13 @@ export default function SignupComponent() {
   const [fullname, setFullname] = useState("");
   const [error, setError] = useState();
 
+  const REACT_APP_BASE_URL = process.env.REACT_APP_BASE_URL;
+
   const getToken = async (credentials) => {
+    console.log(`${REACT_APP_BASE_URL}users/signup`);
     try {
       const token = await axios.post(
-        "http://localhost:8000/users/signup",
+        `${REACT_APP_BASE_URL}users/signup`,
         JSON.stringify(credentials),
         {
           headers: {

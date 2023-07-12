@@ -9,6 +9,8 @@ import Modal from "./Modal";
 import { filedatastate } from "../../context/filedataState";
 import { toast } from "react-toastify";
 
+const REACT_APP_BASE_URL = process.env.REACT_APP_BASE_URL;
+
 export default function Header() {
   const navigate = useNavigate();
   const [shareWithEmail, setShareWithEmail] = useState("");
@@ -38,7 +40,7 @@ export default function Header() {
     try {
       const upload_file = async () => {
         return await axios.post(
-          "http://127.0.0.1:8000/uploads/upload",
+          `${REACT_APP_BASE_URL}uploads/upload`,
           formdata,
           {
             headers: {
@@ -77,7 +79,7 @@ export default function Header() {
     try {
       const share_file = async () => {
         return await axios.post(
-          "http://127.0.0.1:8000/uploads/share",
+          `${REACT_APP_BASE_URL}uploads/share`,
           JSON.stringify(data),
           {
             headers: {

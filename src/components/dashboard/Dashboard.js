@@ -7,6 +7,8 @@ import { useRecoilValue, useSetRecoilState } from "recoil";
 import { filedatastate } from "../../context/filedataState";
 import { loginStateAtom } from "../../context/loginState";
 
+const REACT_APP_BASE_URL = process.env.REACT_APP_BASE_URL;
+
 function parseJwt(token) {
   var base64Url = token.split(".")[1];
   var base64 = base64Url.replace(/-/g, "+").replace(/_/g, "/");
@@ -50,7 +52,7 @@ export default function Dashboard() {
 
       try {
         const userFilesResponse = await axios.get(
-          "http://127.0.0.1:8000/uploads/fetch",
+          `${REACT_APP_BASE_URL}uploads/fetch`,
           {
             headers: {
               Authorization: `Bearer ${token}`,
@@ -60,7 +62,7 @@ export default function Dashboard() {
         setUserdata(userFilesResponse.data);
 
         const sharedFilesResponse = await axios.get(
-          "http://127.0.0.1:8000/uploads/shared",
+          `${REACT_APP_BASE_URL}uploads/shared`,
           {
             headers: {
               Authorization: `Bearer ${token}`,
